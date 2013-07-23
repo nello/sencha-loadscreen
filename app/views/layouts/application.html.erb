@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<% if Rails.env == 'production' %>
+<html manifest="prod.manifest">
+<head>
+    <title>Proximity</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "sencha-touch-all" %>
+<% else %>
+<html>
+<head>
+    <title>Proximity</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "sencha-touch-all-debug" %>
+<% end %>
+    <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= yield(:head) %>
+</head>
+<body>
+</body>
+</html>

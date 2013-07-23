@@ -1,0 +1,192 @@
+// Place all the styles related to the notes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'sass/sencha-touch';
+
+@include icon('cart', '%', 'Pictos');
+@include icon('settings2', 'x', 'Pictos');
+@include icon('globe', '\e013', 'Icomoon');
+@include icon('time', '\f210', 'Icomoon');
+@include icon('star', '\e017', 'Icomoon');
+
+@include icon-font('Icomoon',
+    inline-font-files(
+        'icomoon/icomoon.woff', woff,
+        'icomoon/icomoon.ttf', truetype,
+        'icomoon/icomoon.svg', svg
+));
+
+// search icons
+@mixin search-icon($name, $character, $color, $font-family: false) {
+    .search-icon.#{$name} {
+
+        &:before {
+            position: absolute;
+            display: inline-block;
+            text-align: right;
+            speak: none; /* Not to be trusted, but hey. */
+            color: $color;
+            text-shadow: 1px 1px 2px rgba(100,100,100,0.6);
+
+            @if $font-family {
+                font-family: $font-family;
+            } @else {
+                font-family: Pictos;
+            }
+
+            @if $character {
+                content: "#{$character}";
+            } @else {
+                content: "s";
+            }
+        }
+    }
+}
+
+$black: #000000;
+$darkgrey: #666666;
+$grey: #888888;
+$lightgrey: #aaaaaa;
+$faintgrey: #f0f0f0;
+$white: #ffffff;
+$royalblue: #0979ba;
+$paleblue: #dae8f2;
+$darkblue: darken($royalblue, 7%);
+$red: #f91f1f;
+
+@include search-icon('product', '\f010', $red, 'Icomoon');
+@include search-icon('business', '\e000', $red, 'Icomoon');
+@include search-icon('place', '\f08d', $red, 'Icomoon');
+@include search-icon('service', '\e007', $red, 'Icomoon');
+@include search-icon('event', '\e001', $red, 'Icomoon');
+@include search-icon('user', 's', $red, 'Pictos');
+
+//@include sencha-toolbar-ui('subnav', #000000, 'recessed');
+@include sencha-tabbar-ui('subnav', #000000, 'recessed', #ffffff);
+
+// sencha-touch-2.2 bug
+.x-field-search .x-field-input:before {
+    margin-top: 0;
+}
+
+// list items
+.list-item-term {
+  width: 95%; height: 50%;
+  color: $darkblue; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 2em;
+  padding-right: 1em;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 0.9em;
+}
+
+.list-item-name {
+    width: 95%; font-size: 90%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding-left: 0; padding-right: 1em; padding-top: 0; padding-bottom: 0;
+}
+
+.list-item-address {
+    color: $darkblue;
+    width: 95%; font-size: 70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding-left: 0; padding-right: 1em; padding-top: 0.5em; padding-bottom: 0.5em;
+}
+
+.list-item-phone {
+    width: 95%;
+    color: $darkblue; font-size: 70%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding-left: 1em; padding-right: 1em; padding-top: 0; padding-bottom: 0;
+    background: inline-image('phone1.png') no-repeat 0 0.3em;
+    background-size: auto 60%;
+}
+
+// fix curved corners at the start of lists
+.x-list-item-first {
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-top-right-radius: 6px;
+}
+
+// wipe out font disclosure icon
+.x-list .x-list-disclosure:before {
+    position: absolute;
+    content: '';
+    font-family: '';
+}
+
+// disclosure position
+.x-list .x-list-item-tpl .x-list-disclosure {
+    position: absolute;
+    right: -7px;
+    top: 14px;
+}
+
+// disclosure display
+.x-list-item .x-list-disclosure {
+    height: 40px;
+    width: 40px;
+    -webkit-mask: 0 0 inline-image('code3.png') no-repeat;
+    -webkit-mask-size: auto 100%;
+}
+
+// skinny buttons
+.x-button-label {
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+
+// links are blue!
+a:link {
+    color: $darkblue;
+    text-decoration: none;
+}
+
+// carousel panels
+.x-carousel-item {
+    .x-panel-inner {
+        background: $faintgrey !important;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// detail panel
+.detail-panel {
+    .x-panel-inner {
+        padding: 10px 13px 13px 13px;
+        background: $white !important;
+    }
+}
+
+.detail-name {
+    font-size: 1.2em;
+    padding-bottom: 0.4em;
+}
+
+.detail-image {
+    max-width: 100%;
+    box-shadow: 0.5em 0.5em 0.5em $lightgrey;
+    margin-bottom: 0.8em;
+}
+
+.detail-description {
+    color: $darkblue;
+    font-size: 70%;
+    font-style: italic;
+    margin-bottom: 0.8em;
+}
+
+.detail-address {
+    color: $darkblue;
+    font-size: 70%;
+    margin-bottom: 0.8em;
+}
+
+.detail-phone {
+    color: $darkblue;
+    padding-left: 1em; padding-right: 1em; padding-top: 0; padding-bottom: 0;
+    background: inline-image('phone1.png') no-repeat 0 0.3em;
+    background-size: auto 60%;
+    margin-bottom: 1em;
+}

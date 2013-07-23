@@ -1,0 +1,8 @@
+$base-color: lighten(#0979ba, 5%);
+$base_gradient: 'bevel';
+$tabs-dark: darken($base-color, 25%);
+//$tabs-light: darken($base-color, 100%);
+
+@import 'themes/stylesheets/sencha-touch/default';
+@import 'themes/stylesheets/sencha-touch/default/all';
+
